@@ -50,6 +50,7 @@
 </style>
 <body>
 	<div id="app">
+		<h2>你好，我在这里添加了h2标题</h2>
 		<input type="text" id="inp" @keyup.enter="enters" v-model="textInput"/>
 		<ul>
 			<li v-for="todo in todos" @keyup.enter = "enters($index)" @mouseenter = "enteritem(todo)"
