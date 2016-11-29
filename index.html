@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#inp{
+		width:600px;
+		height:32px;
+		margin:30px auto;
+		display:block;
+		outline:none;
+		border-color:red;
+		padding-left:8px;
+	}
+	ul{
+		width:600px;
+		margin-left:330px;
+		list-style:none;
+	}
+	ul li{
+		line-height:30px;
+	}
+	.checkbox{
+		margin:2px 10px;
+	}
+	.red{
+		color:white;
+		cursor:pointer;
+		background:red;
+		padding:0 3px;
+		border-radius:5px;
+		height:20px;
+		line-height:20px;
+	}
+	.blue{
+		color:white;
+		cursor:pointer;
+		background:blue;
+		padding:0 3px;
+		border-radius:5px;
+		height:20px;
+		line-height:20px;
+	}
+	.bg{
+		background:#ccc;
+		border-radius:3px;
+	}
+</style>
+<body>
+	<div id="app">
+		<input type="text" id="inp" @keyup.enter="enters" v-model="textInput"/>
+		<ul>
+			<li v-for="todo in todos" @keyup.enter = "enters($index)" @mouseenter = "enteritem(todo)"
+				@mouseleave="leaveitem(todo)">
+				<label for="">
+					 <input type='checkbox' class="checkbox" @click="checkitem(todo)"
+					 value="check{{$index}}" name="checks"/>
+				 </label>
+				 <span>{{$index+1}}.{{todo.text}}</span>
+				  <span v-show="todo.isFinish" class="red">finish</span>
+				 <b v-if="todo.text.length<6">若</b>
+				 <b v-else>强</b>
+				 <span  v-show="todo.isDelete" @click="deltxt($index)" class="blue">delete</span>
+			</li>
+		</ul>
+	</div>
+<script src="vue.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
